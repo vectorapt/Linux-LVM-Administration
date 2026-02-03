@@ -35,7 +35,7 @@ It simulates real-world scenarios where storage needs to be expanded dynamically
 7. Mounted the filesystem and created a pre-snapshot
 8. Extended the Logical Volume to use added storage
 9. Grew the filesystem to reflect new capacity
-10. Created and mounted a post-snapshot
+10. Created a post-snapshot
 
 ---
 
