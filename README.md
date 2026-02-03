@@ -26,16 +26,17 @@ It simulates real-world scenarios where storage needs to be expanded dynamically
 
 ## Implementation Overview
 
-1. Attached additional disks and verified them in the system
-2. Created Physical Volumes on new disks
-3. Created a Volume Group using the first disk
-4. Extended the Volume Group by adding a second disk
-5. Created a Logical Volume from the Volume Group
-6. Formatted the Logical Volume with a Linux filesystem
-7. Mounted the filesystem and created a pre-snapshot
-8. Extended the Logical Volume to use added storage
-9. Grew the filesystem to reflect new capacity
-10. Created a post-snapshot
+1. Added two new disks (`/dev/sda` and `/dev/sdb`), each with **5 GB** capacity, and verified their availability in the system  
+2. Initialized both disks as **Physical Volumes (PVs)**  
+3. Created a **Volume Group (vg_data)** using the first disk (`/dev/sda`)  
+4. Created a **Logical Volume (lv_data)` of **4 GB** from the Volume Group  
+5. Formatted the Logical Volume with the **XFS filesystem**  
+6. Mounted the filesystem at `/mnt/lvm_data` and configured a **persistent mount** using `/etc/fstab`  
+7. Created a **pre-resize snapshot** of the Logical Volume for rollback purposes  
+8. Extended the Volume Group by adding the second disk (`/dev/sdb`), increasing total VG capacity to approximately **10 GB**  
+9. Extended the Logical Volume by an additional **4 GB**, resulting in an **8 GB Logical Volume**  
+10. Grew the XFS filesystem online to reflect the new Logical Volume size  
+11. Created a **post-resize snapshot** of **1 GB** to capture the final expanded state  
 
 ---
 
