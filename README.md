@@ -18,14 +18,9 @@ It simulates real-world scenarios where storage needs to be expanded dynamically
 
 ---
 
-## Technologies & Tools
+## Environment
 
-- RHEL 9 (Linux)
-- LVM utilities (pvcreate, vgcreate, vgextend, lvcreate, lvextend)
-- mkfs (ext4/xfs)
-- mount and filesystem tools
-- resize2fs / xfs_growfs
-- lsblk, df -h
+- VMware Virtual Machine running RHEL 9
 
 ---
 
@@ -37,10 +32,10 @@ It simulates real-world scenarios where storage needs to be expanded dynamically
 4. Extended the Volume Group by adding a second disk
 5. Created a Logical Volume from the Volume Group
 6. Formatted the Logical Volume with a Linux filesystem
-7. Mounted the filesystem
+7. Mounted the filesystem and created a pre-snapshot
 8. Extended the Logical Volume to use added storage
 9. Grew the filesystem to reflect new capacity
-10. Created and mounted an LVM snapshot
+10. Created and mounted a post-snapshot
 
 ---
 
@@ -51,12 +46,6 @@ It simulates real-world scenarios where storage needs to be expanded dynamically
 - Filesystem resizing without downtime
 - Snapshot-based backup concepts
 - Linux system administration practices
-
----
-
-## Environment
-
-- VMware Virtual Machine running RHEL 9
 
 ---
 
@@ -83,4 +72,3 @@ Screenshots demonstrating each major stage (PV creation, VG setup and extension,
 - mkfs – Create filesystems
 - mount / umount – Mount and unmount filesystems
 - resize2fs / xfs_growfs – Resize filesystems
-- df -h – Verify storage usage
